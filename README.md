@@ -1,11 +1,16 @@
 # Open App Builder Server
 
-```sh
-cp .env.example .env
-npm run docker:dev
-```
+**PreRequisites**
+
+- Docker
+- Node
 
 ## Local Development
+
+```sh
+cp .env.example .env
+npm run dev
+```
 
 Access through https://localhost:8000
 Use the `DASHBOARD_USERNAME` and `DASHBOARD_USERNAME` variables set in `.env`
