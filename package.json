@@ -19,5 +19,8 @@
     "npm": "^10.0.0",
     "node": "^20.0.0"
   },
-  "packageManager": "npm@10.7.0"
+  "packageManager": "npm@10.7.0",
+  "dependencies": {
+    "dbmate": "^2.21.0"
+  }
 }
