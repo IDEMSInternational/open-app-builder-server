@@ -1,0 +1,2 @@
+# ensure pooler elixir files in lf
+*.exs eol=lf
