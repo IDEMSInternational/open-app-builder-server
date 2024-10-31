@@ -3,7 +3,6 @@
 **PreRequisites**
 
 - Docker
-- Node
 
 Also copy and configure default environment variables
 
@@ -26,7 +25,7 @@ https://supabase.com/docs/guides/self-hosting/docker#generate-api-keys
 ## Start Server
 
 ```sh
-npm run start
+docker compose up -d
 ```
 
 Access through https://localhost:8000
@@ -34,12 +33,19 @@ Use the `DASHBOARD_USERNAME` and `DASHBOARD_USERNAME` variables set in `.env`
 
 ## Local Development
 
+**PreRequisites**
+
+[Deno 2](https://docs.deno.com/runtime/getting_started/installation/)
+
 ```sh
-npm run dev
+docker compose -f docker-compose.yml -f ./dev/docker-compose.dev.yml up --renew-anon-volumes
 ```
 
-**Edge Functions**
-Require [Deno](https://docs.deno.com/runtime/getting_started/installation/)
+or
+
+```sh
+deno task start:dev
+```
 
 # Supabase Docker
 
@@ -47,7 +53,7 @@ This is a minimal Docker Compose setup for self-hosting Supabase. Follow the ste
 
 ## Troubleshooting
 
-**analytics requires docker daemon exposed on tcp://localhost:2375**
+**analytics requires docker daemon exposed on tcp://localhost:2375**  
 If running docker on windows via docker desktop, need to enable from settings
 _Expose daemon on tcp://localhost:2375 without TLS_
 
@@ -56,3 +62,7 @@ _Expose daemon on tcp://localhost:2375 without TLS_
 1. Why does this not use Supabase CLI, with commands like `supabase start` or `supabase migrate`
 
 The supabase CLI is designed to only run development mode containers locally, and communicate with a production instance running on the supabase platform. In order to run a local production instance a custom docker-based approach is requried.
+
+2. Why does local development use Deno instead of Node
+
+As Supabase function development is written in Deno it makes sense to require one single runtime throughout instead of multiple
