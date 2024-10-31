@@ -1,0 +1,23 @@
+{
+  "name": "supabase",
+  "description": "The open source Firebase alternative.",
+  "version": "0.0.0",
+  "author": "Supabase, Inc.",
+  "license": "Apache-2.0",
+  "private": true,
+  "workspaces": [],
+  "scripts": {
+    "dev": "docker compose -f docker-compose.yml -f ./dev/docker-compose.dev.yml up --renew-anon-volumes",
+    "start": "docker compose up -d",
+    "stop": "docker compose -f docker-compose.yml -f ./dev/docker-compose.dev.yml down --remove-orphans"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/supabase/supabase.git"
+  },
+  "engines": {
+    "npm": "^10.0.0",
+    "node": "^20.0.0"
+  },
+  "packageManager": "npm@10.7.0"
+}
