@@ -1,23 +1,18 @@
 {
-  "name": "supabase",
-  "description": "The open source Firebase alternative.",
+  "name": "open-app-builder-server",
+  "description": "Server for the Open App Builder ecosystem",
   "version": "0.0.0",
-  "author": "Supabase, Inc.",
-  "license": "Apache-2.0",
+  "author": "IDEMS International",
+  "license": "see LICENSE",
   "private": true,
   "workspaces": [],
   "scripts": {
-    "dev": "docker compose -f docker-compose.yml -f ./dev/docker-compose.dev.yml up --renew-anon-volumes",
     "start": "docker compose up -d",
+    "start:dev": "docker compose -f docker-compose.yml -f ./dev/docker-compose.dev.yml up --renew-anon-volumes",
     "stop": "docker compose -f docker-compose.yml -f ./dev/docker-compose.dev.yml down --remove-orphans"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/supabase/supabase.git"
-  },
-  "engines": {
-    "npm": "^10.0.0",
-    "node": "^20.0.0"
-  },
-  "packageManager": "npm@10.7.0"
+    "url": "git+https://github.com/IDEMSInternational/open-app-builder-server"
+  }
 }
