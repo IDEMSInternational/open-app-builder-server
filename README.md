@@ -6,7 +6,7 @@
 
 Also copy and configure default environment variables
 
-```
+```sh
 cp .env.example .env
 ```
 
