@@ -13,5 +13,8 @@ ALTER DEFAULT PRIVILEGES FOR ROLE postgres IN SCHEMA open_app_builder GRANT ALL 
 ALTER DEFAULT PRIVILEGES FOR ROLE postgres IN SCHEMA open_app_builder GRANT ALL ON ROUTINES TO anon, authenticated, service_role;
 ALTER DEFAULT PRIVILEGES FOR ROLE postgres IN SCHEMA open_app_builder GRANT ALL ON SEQUENCES TO anon, authenticated, service_role;
 
--- migrate:down
+-- Assign additional privileges for Postgrest
+GRANT USAGE ON SCHEMA open_app_builder TO authenticator;
 
+
+-- migrate:down
