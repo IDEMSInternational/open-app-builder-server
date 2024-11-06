@@ -1,10 +1,11 @@
 {
   "deno.enable": true,
+  "deno.config": "./deno.jsonc",
   "typescript.tsserver.experimental.enableProjectDiagnostics": false,
   "[typescript]": {
     "editor.defaultFormatter": "denoland.vscode-deno"
   },
-  "deno.enablePaths": ["volumes/functions","scripts"],
+  "deno.enablePaths": ["volumes/functions","functions","scripts"],
   "deno.lint": true,
   "deno.unstable": [
     "bare-node-builtins",
