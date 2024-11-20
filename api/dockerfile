@@ -5,7 +5,7 @@ COPY deno.json ./
 COPY deno.lock ./
 RUN deno install --frozen
 COPY ./src ./src
-RUN deno compile --allow-read --allow-run --allow-net --output /usr/local/bin/api ./src/main.ts
+RUN deno compile --allow-read --allow-run --allow-net --allow-env --output /usr/local/bin/api ./src/main.ts
 
 # Runtime
 FROM denoland/deno:alpine-2.0.6 AS runtime

@@ -1,11 +1,15 @@
 {
   "imports": {
-    "@std/assert": "jsr:@std/assert@1"
+    "@std/assert": "jsr:@std/assert@1",
+    "@supabase/supabase-js": "jsr:@supabase/supabase-js@^2.46.1"
   },
   // auto-install node_modules
   "nodeModulesDir": "auto",
   // https://docs.deno.com/runtime/reference/ts_config_migration/#using-the-%22lib%22-property
   "compilerOptions": {
-    "lib": ["deno.ns"]
-  }
+    "lib": ["deno.window"],
+
+  },
+  "workspace":["./api"]
+
 }
