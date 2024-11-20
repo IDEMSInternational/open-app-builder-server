@@ -5,7 +5,7 @@
   "[typescript]": {
     "editor.defaultFormatter": "denoland.vscode-deno"
   },
-  "deno.enablePaths": ["volumes/functions","functions","scripts"],
+  "deno.enablePaths": ["api","volumes/functions","functions","scripts"],
   "deno.lint": true,
   "deno.unstable": [
     "bare-node-builtins",

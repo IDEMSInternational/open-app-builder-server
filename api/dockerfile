@@ -1,0 +1,16 @@
+# Builder
+FROM denoland/deno:alpine-2.0.6 AS builder
+WORKDIR /app
+COPY deno.json ./
+COPY deno.lock ./
+RUN deno install --frozen
+COPY ./src ./src
+RUN deno compile --allow-read --allow-run --allow-net --output /usr/local/bin/api ./src/main.ts
+
+# Runtime
+FROM denoland/deno:alpine-2.0.6 AS runtime
+COPY --from=builder --chmod=0755 /usr/local/bin/ /usr/local/bin/
+CMD api
+
+# NOTE - use larger denoland alpine image instead of regular alpine as requires custom support
+# for glibc which is hard to implement. See comments on https://github.com/denoland/deno_docker/issues/369
