@@ -66,3 +66,7 @@ The supabase CLI is designed to only run development mode containers locally, an
 2. Why does local development use Deno instead of Node
 
 As Supabase function development is written in Deno it makes sense to require one single runtime throughout instead of multiple
+
+3. Why use supabase and not other tools
+
+See discussion notes in https://docs.google.com/document/d/1Io6pFFjAW4FBKFabFikfu2SOKbPcjvK3NiLUxW_PHcQ/edit?tab=t.0#heading=h.k7e1r6vfq9yl
