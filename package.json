@@ -11,10 +11,19 @@
     "start:dev": "docker compose -f docker-compose.yml -f ./dev/docker-compose.dev.yml up --renew-anon-volumes",
     "start:api": "cd api && deno task start",
     "stop": "docker compose -f docker-compose.yml -f ./dev/docker-compose.dev.yml down --remove-orphans",
-    "schema:export":"deno run -A --unstable npm:drizzle-kit pull"
+    "drizzle:pull:core":"deno run -A --env-file=./api/.env --unstable npm:drizzle-kit pull --config=config/core.config.ts",
+    "drizzle:pull:deployment":"deno run -A --env-file=./api/.env --unstable npm:drizzle-kit pull --config=config/deployment.config.ts"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/IDEMSInternational/open-app-builder-server"
+  },
+  "dependencies": {
+    "drizzle-kit": "^0.28.1",
+    "drizzle-orm": "^0.36.3",
+    "pg": "^8.13.1"
+  },
+  "devDependencies": {
+    "@types/pg": "npm:@types/pg@^8.11.10"
   }
 }
