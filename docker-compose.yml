@@ -316,7 +316,6 @@ services:
       # TODO: Allow configuring VERIFY_JWT per function. This PR might help: https://github.com/supabase/cli/pull/786
       VERIFY_JWT: "${FUNCTIONS_VERIFY_JWT}"
     volumes:
-      - ./functions:/home/deno/functions:Z
       - ./volumes/functions/main:/home/deno/functions/main:Z
     ports:
       - 9000:9000
@@ -397,6 +396,10 @@ services:
       POSTGRES_DB: ${POSTGRES_DB}
       JWT_SECRET: ${JWT_SECRET}
       JWT_EXP: ${JWT_EXPIRY}
+    # Open App Builder: Expose port locally to allow connection from drizzle running server (non-production)
+    # May be fixed to allow connection via supavisor pooler in future: https://github.com/supabase/supavisor/issues/364
+    ports:
+      - 5433:${POSTGRES_PORT}
     volumes:
       - ./volumes/db/realtime.sql:/docker-entrypoint-initdb.d/migrations/99-realtime.sql:Z
       # Must be superuser to create event trigger
@@ -489,21 +492,36 @@ services:
 # docker compose up db migrate
 #############################################################################################
 
-  migrate:
-      container_name: db-migrate
-      image: amacneil/dbmate:2.21
-      command: migrate
-      restart: no
-      depends_on: 
-        db:
-          condition: service_healthy
-      environment:
-        DATABASE_URL: postgres://postgres:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}?sslmode=disable 
-        DBMATE_SCHEMA_FILE: /db/schema/schema.sql
-        DBMATE_MIGRATIONS_TABLE: open_app_builder._schema_migrations
-      volumes:
-        - ./migrations/core:/db/migrations
-        - ./schema/core:/db/schema
+  # docker compose up --build --force-recreate api 
+  # TODO - versioning
+  # api:
+  #   container_name: open-app-builder-api
+  #   build: 
+  #     context: ./api
+  #     dockerfile: Dockerfile
+  #     target: runtime
+  #   ports:
+  #     - "8000:8000"
+
+      # TODO - env
+    
+    # command: /bin/sh -c "sleep infinity"
+
+  # migrate:
+  #     container_name: db-migrate
+  #     image: amacneil/dbmate:2.21
+  #     command: migrate
+  #     restart: no
+  #     depends_on: 
+  #       db:
+  #         condition: service_healthy
+  #     environment:
+  #       DATABASE_URL: postgres://postgres:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}?sslmode=disable 
+  #       DBMATE_SCHEMA_FILE: /db/schema/schema.sql
+  #       DBMATE_MIGRATIONS_TABLE: open_app_builder._schema_migrations
+  #     volumes:
+  #       - ./migrations/core:/db/migrations
+  #       - ./schema/core:/db/schema
 
 #############################################################################################
 
