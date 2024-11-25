@@ -11,8 +11,9 @@
     "start:dev": "docker compose -f docker-compose.yml -f ./dev/docker-compose.dev.yml up --renew-anon-volumes",
     "start:api": "cd api && deno task start",
     "stop": "docker compose -f docker-compose.yml -f ./dev/docker-compose.dev.yml down --remove-orphans",
-    "drizzle:pull:core":"deno run -A --env-file=./api/.env --unstable npm:drizzle-kit pull --config=config/core.config.ts",
-    "drizzle:pull:deployment":"deno run -A --env-file=./api/.env --unstable npm:drizzle-kit pull --config=config/deployment.config.ts"
+    "drizzle:pull:core": "deno run -A --env-file=./api/.env --unstable npm:drizzle-kit pull --config=config/core.config.ts",
+    "drizzle:pull:deployment": "deno run -A --env-file=./api/.env --unstable npm:drizzle-kit pull --config=config/deployment.config.ts",
+    "dbmate:core":"dbmate --migrations-dir migrations/core"
   },
   "repository": {
     "type": "git",
@@ -26,5 +27,6 @@
   },
   "devDependencies": {
     "@types/pg": "npm:@types/pg@^8.11.10"
-  }
+  },
+  "packageManager": "yarn@1.22.19+sha1.4ba7fc5c6e704fce2066ecbfb0b0d8976fe62447"
 }

@@ -10,7 +10,6 @@ export default defineConfig({
     schema: "./schema/core/schema.ts",
     schemaFilter: ["open_app_builder"],
     out: "./schema/core",
-    migrations: { schema: "open_app_builder", table: "migrations" },
     entities: {
         // https://orm.drizzle.team/docs/drizzle-config-file#roles
         roles: {

@@ -10,7 +10,6 @@ export default defineConfig({
     schema: "./schema/deployment/schema.ts",
     schemaFilter: ["deployment"],
     out: "./schema/deployment",
-    migrations: { schema: "deployment", table: "migrations" },
     entities: {
         // https://orm.drizzle.team/docs/drizzle-config-file#roles
         roles: {

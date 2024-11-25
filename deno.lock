@@ -18,6 +18,7 @@
     "npm:@types/pg@^8.11.10": "8.11.10",
     "npm:create-hono@latest": "0.14.2",
     "npm:dbmate@*": "2.21.0",
+    "npm:dbmate@2.23.0": "2.23.0",
     "npm:dbmate@^2.23.0": "2.23.0",
     "npm:drizzle-kit@*": "0.28.1_esbuild@0.19.12",
     "npm:drizzle-kit@0.28.1": "0.28.1_esbuild@0.19.12",
