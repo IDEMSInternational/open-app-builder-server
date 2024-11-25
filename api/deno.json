@@ -3,7 +3,7 @@
     "hono": "jsr:@hono/hono@^4.6.10"
   },
   "tasks": {
-    "start": "deno run --watch --env-file=./.env --allow-env --allow-sys --allow-net src/main.ts"
+    "start": "deno run --watch --env-file=./.env --allow-env --allow-sys --allow-net --allow-read --allow-run src/main.ts"
   }
 
   

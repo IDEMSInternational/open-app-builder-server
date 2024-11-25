@@ -1,8 +1,7 @@
 # Usage
 #   Start:          docker compose up
-#   With helpers:   docker compose -f docker-compose.yml -f ./dev/docker-compose.dev.yml up
 #   Stop:           docker compose down
-#   Destroy:        docker compose -f docker-compose.yml -f ./dev/docker-compose.dev.yml down -v --remove-orphans
+#   Destroy:        docker compose down -v --remove-orphans
 
 name: open-app-builder-server
 
@@ -231,8 +230,6 @@ services:
         condition: service_healthy
       rest:
         condition: service_started
-      imgproxy:
-        condition: service_started
     healthcheck:
       test:
         [
@@ -261,24 +258,6 @@ services:
       REGION: stub
       GLOBAL_S3_BUCKET: stub
       ENABLE_IMAGE_TRANSFORMATION: "true"
-      IMGPROXY_URL: http://imgproxy:5001
-    volumes:
-      - ./volumes/storage:/var/lib/storage:z
-
-  imgproxy:
-    container_name: supabase-imgproxy
-    image: darthsim/imgproxy:v3.8.0
-    healthcheck:
-      test: ["CMD", "imgproxy", "health"]
-      timeout: 5s
-      interval: 5s
-      retries: 3
-    environment:
-      IMGPROXY_BIND: ":5001"
-      IMGPROXY_LOCAL_FILESYSTEM_ROOT: /
-      IMGPROXY_USE_ETAG: "true"
-      IMGPROXY_ENABLE_WEBP_DETECTION: ${IMGPROXY_ENABLE_WEBP_DETECTION}
-      IMGPROXY_LOG_LEVEL: error
     volumes:
       - ./volumes/storage:/var/lib/storage:z
 
